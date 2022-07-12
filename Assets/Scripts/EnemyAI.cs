@@ -9,10 +9,12 @@ public class EnemyAI : MonoBehaviour
     NavMeshAgent navMeshAgent;
     float distanceToTarget = Mathf.Infinity;
     bool isProvoked = false;
+    Animator animator;
     
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class EnemyAI : MonoBehaviour
 
     void EngageTarget() {
         if (distanceToTarget > navMeshAgent.stoppingDistance) {
+            animator.SetBool("attack", true);
             ChaseTarget();
         } else if (distanceToTarget <= navMeshAgent.stoppingDistance) {
             AttackTarget();
@@ -43,9 +46,11 @@ public class EnemyAI : MonoBehaviour
 
     void AttackTarget() {
         Debug.Log("attack");
+        animator.SetBool("attack", true);
     }
 
     void ChaseTarget() {
+        animator.SetTrigger("move");
         navMeshAgent.SetDestination(target.position);
     }
 }

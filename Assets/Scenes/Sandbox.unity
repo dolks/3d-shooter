@@ -2458,6 +2458,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5886433650597024512, guid: 49ecb8744664143b39f77098edd2f005, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5886433650597024515, guid: 49ecb8744664143b39f77098edd2f005, type: 3}
       propertyPath: m_Name
       value: Enemy
