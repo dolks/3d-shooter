@@ -6,6 +6,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Transform target;
     [SerializeField] float chaseRange = 5;
+    [SerializeField] float turnSpeed = 5;
     NavMeshAgent navMeshAgent;
     float distanceToTarget = Mathf.Infinity;
     bool isProvoked = false;
@@ -36,6 +37,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     void EngageTarget() {
+        FaceTarget();
         if (distanceToTarget > navMeshAgent.stoppingDistance) {
             animator.SetBool("attack", true);
             ChaseTarget();
@@ -52,5 +54,12 @@ public class EnemyAI : MonoBehaviour
     void ChaseTarget() {
         animator.SetTrigger("move");
         navMeshAgent.SetDestination(target.position);
+    }
+
+    private void FaceTarget() {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation( new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
+
     }
 }
