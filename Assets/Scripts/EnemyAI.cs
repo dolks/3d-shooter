@@ -21,7 +21,6 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         distanceToTarget = Vector3.Distance(transform.position, target.position);
 
         if (isProvoked) {
@@ -29,6 +28,10 @@ public class EnemyAI : MonoBehaviour
         } else if (distanceToTarget <= chaseRange) {
             isProvoked = true;
         }
+    }
+
+    public void OnDamageTaken() {
+        isProvoked = true;
     }
 
     void OnDrawGizmosSelected() {
@@ -47,8 +50,8 @@ public class EnemyAI : MonoBehaviour
     }
 
     void AttackTarget() {
-        Debug.Log("attack");
         animator.SetBool("attack", true);
+        GetComponent<EnemyAttack>().AttackHitEvent();
     }
 
     void ChaseTarget() {

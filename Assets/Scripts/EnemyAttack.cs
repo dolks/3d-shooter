@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     PlayerHealth target;
-    [SerializeField] float damage = 0.4f;
+    [SerializeField] float damage = 25f;
     void Start()
     {
         target = FindObjectOfType<PlayerHealth>();
@@ -14,6 +14,5 @@ public class EnemyAttack : MonoBehaviour
     public void AttackHitEvent() {
         if (target == null) return;
         target.ProcessHit(damage);
-
     }
 }

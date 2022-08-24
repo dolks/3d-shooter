@@ -12,7 +12,11 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void ProcessHit(float damage) {
+        if (health < 0) {return;}
         health -= damage;
-        if (health < 0) {health = 0;}
+        if (health <= 0) {
+            health = 100f;
+            GetComponent<DeathHandler>().HandleDeath();
+        }
     }
 }
