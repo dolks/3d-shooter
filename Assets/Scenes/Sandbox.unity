@@ -1036,6 +1036,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c9795a96c094f4cbde4d65546aa9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &624499068 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1841738095899314138, guid: fb1a0f0f545a84e9dba50f1257b9ec6d, type: 3}
+  m_PrefabInstance: {fileID: 1841738095125876441}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &634202630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3979,6 +3984,10 @@ PrefabInstance:
       propertyPath: damage
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 8621386395266153329, guid: fb1a0f0f545a84e9dba50f1257b9ec6d, type: 3}
+      propertyPath: FPCamera
+      value: 
+      objectReference: {fileID: 624499068}
     - target: {fileID: 8621386395266153329, guid: fb1a0f0f545a84e9dba50f1257b9ec6d, type: 3}
       propertyPath: timeBetweenShots
       value: 2
