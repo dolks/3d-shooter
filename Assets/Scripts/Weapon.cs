@@ -10,15 +10,24 @@ public class Weapon : MonoBehaviour
     [SerializeField] float damage = 50;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitVFX;
+    [SerializeField] Ammo ammoSlot;
+    [SerializeField] float timeBetweenShots = 0.5f;
+
+    bool canShoot = true;
 
     void Update()
     {
-        if (Input.GetButton("Fire1")) {
-            Shoot();
+        if (Input.GetButtonDown("Fire1") && canShoot) {
+            StartCoroutine(Shoot());
         }
     }
 
-    private void Shoot() {
+    private IEnumerator Shoot() {
+        canShoot = false;
+        if (ammoSlot.getCurrentAmmo() <= 0) {
+            yield break;
+        }
+        ammoSlot.reduceCurrentAmmo();
         muzzleFlash.Play();
         RaycastHit hit;
         if (Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range)) {
@@ -26,6 +35,8 @@ public class Weapon : MonoBehaviour
             EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
             if (target) {target.TakeDamage(damage);}
         }
+        yield return new WaitForSeconds(timeBetweenShots);
+        canShoot = true;
     }
 
     private void CreateHitImpact(RaycastHit hit)
