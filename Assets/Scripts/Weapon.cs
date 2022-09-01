@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitVFX;
     [SerializeField] Ammo ammoSlot;
+    [SerializeField] AmmoType ammoType;
     [SerializeField] float timeBetweenShots = 0.5f;
 
     bool canShoot = true;
@@ -24,10 +25,10 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator Shoot() {
         canShoot = false;
-        if (ammoSlot.getCurrentAmmo() <= 0) {
+        if (ammoSlot.getCurrentAmmo(ammoType) <= 0) {
             yield break;
         }
-        ammoSlot.reduceCurrentAmmo();
+        ammoSlot.reduceCurrentAmmo(ammoType);
         muzzleFlash.Play();
         RaycastHit hit;
         if (Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range)) {

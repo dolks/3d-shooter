@@ -12,17 +12,30 @@ public class WeaponZoom : MonoBehaviour
 
     [SerializeField] RigidbodyFirstPersonController firstPersonController;
 
-    // Update is called once per frame
     private void Update()
     {
         if (Input.GetKey(KeyCode.Z)) {
-            mainCamera.fieldOfView = zoomedInView;
-            firstPersonController.mouseLook.XSensitivity = zoomedInSensitivity;
-            firstPersonController.mouseLook.YSensitivity = zoomedInSensitivity;
+            ZoomIn();
         } else {
-            mainCamera.fieldOfView = zoomedOutView;
-            firstPersonController.mouseLook.XSensitivity = zoomedOutSensitivity;
-            firstPersonController.mouseLook.YSensitivity = zoomedOutSensitivity;
+            ZoomOut();
         }
     }
+
+    private void OnDisable() {
+        ZoomOut();
+    }
+
+    private void ZoomIn() {
+        mainCamera.fieldOfView = zoomedInView;
+        firstPersonController.mouseLook.XSensitivity = zoomedInSensitivity;
+        firstPersonController.mouseLook.YSensitivity = zoomedInSensitivity;
+    }
+
+    private void ZoomOut() {
+        mainCamera.fieldOfView = zoomedOutView;
+        firstPersonController.mouseLook.XSensitivity = zoomedOutSensitivity;
+        firstPersonController.mouseLook.YSensitivity = zoomedOutSensitivity;
+    }
+
+
 }
