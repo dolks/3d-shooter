@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2108344429258687729}
-  m_Layer: 0
+  - component: {fileID: 5795475379821560242}
+  - component: {fileID: 5795475379821560241}
+  m_Layer: 3
   m_Name: Ammo Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,3 +33,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5795475379821560242
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6989607684269209895}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.28915605
+  m_Height: 1.2537044
+  m_Direction: 1
+  m_Center: {x: 0.014472455, y: -0.008469164, z: 0.009637296}
+--- !u!114 &5795475379821560241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6989607684269209895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c88a8082b564bfebffcfde7e032f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoAmount: 5
+  ammoType: 0
