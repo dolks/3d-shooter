@@ -30,6 +30,7 @@ public class EnemyAI : MonoBehaviour
         distanceToTarget = Vector3.Distance(transform.position, target.position);
 
         if (isProvoked) {
+            Debug.Log("provooked");
             EngageTarget();
         } else if (distanceToTarget <= chaseRange) {
             isProvoked = true;
@@ -48,7 +49,6 @@ public class EnemyAI : MonoBehaviour
     void EngageTarget() {
         FaceTarget();
         if (distanceToTarget > navMeshAgent.stoppingDistance) {
-            animator.SetBool("attack", true);
             ChaseTarget();
         } else if (distanceToTarget <= navMeshAgent.stoppingDistance) {
             AttackTarget();
